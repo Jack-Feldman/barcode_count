@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """
-Functions used in BC_extract.py script
-
-
+Functions used in barcode_extract_widget.py script
 
 """
 

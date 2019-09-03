@@ -78,33 +78,12 @@ def get_output_dir():
 output_button = Button(window, text='Select', command=get_output_dir)
 output_button.grid(row=1, column=2)
 
-# # RAWCOUNTS OUTPUT FILE NAME
-# text = Label(window, text='Raw counts output file name:', background='deepskyblue2')
-# text.grid(row=4, column=0, sticky=W)
-# rawcounts = Entry(window, width=30, highlightbackground='deepskyblue2')
-# rawcounts.insert(END, 'rawcounts.csv')
-# rawcounts.grid(row=4, column=1)
-#
-# # NORM COUNTS OUTPUT FILE NAME
-# text = Label(window, text='Normalized counts output file name:', background='deepskyblue2')
-# text.grid(row=5, column=0, sticky=W)
-# norm = Entry(window, width=30, highlightbackground='deepskyblue2')
-# norm.insert(END, 'normcounts.csv')
-# norm.grid(row=5, column=1)
-#
-# # CELL TYPE VARIANCE FILE OUTPUT FILE NAME
-# text = Label(window, text='Cell type variance output file name:', background='deepskyblue2')
-# text.grid(row=6, column=0, sticky=W)
-# variance = Entry(window, width=30, highlightbackground='deepskyblue2')
-# variance.insert(END, 'variance.csv')
-# variance.grid(row=6, column=1)
-
 # OUTPUT TEXT
 output_text = scrolledtext.ScrolledText(window,width=50,height=30)
 output_text.grid(row=7, column=1, pady=20,)
 
 # -------------------------------------------------------------------
-# 1.0 BUILD WINDOW
+# END BUILD WINDOW
 # -------------------------------------------------------------------
 
 def check_inputs(fastq,
@@ -196,6 +175,7 @@ def clicked():
             	pass
             else:
                 output_text.insert(1.0, f"Creating directory {output_dir}\n")
+                output_text.update()
                 os.mkdir(output_dir)
 
             # WRITE RAW COUNTS AND LOG FILE
