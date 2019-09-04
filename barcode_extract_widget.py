@@ -27,10 +27,9 @@ window.geometry('800x700')
 window.configure(background='deepskyblue2')
 
 # FASTQ FILE DIRECTORY PATH
-text = Label(window, text='File path to directory containing fastq.gz files:', background='deepskyblue2')
+text = Label(window, text='Path to directory containing fastq.gz files:', background='deepskyblue2')
 text.grid(row=0, column=0, sticky=W)
 fastq = Entry(window, width=30, highlightbackground='deepskyblue2')
-fastq.insert(END, '../Seq_Data S8')
 fastq.grid(row=0, column=1)
 
 def get_fastq_file():
@@ -43,10 +42,10 @@ fastq_button.grid(row=0, column=2)
 
 
 # BARCODE FILE AND SHEET NAME
-text = Label(window, text='File path to barcode excel sheet:', background='deepskyblue2')
+text = Label(window, text='Path to barcode csv file:', background='deepskyblue2')
 text.grid(row=2, column=0, sticky=W)
 barcode = Entry(window, width=30, highlightbackground='deepskyblue2')
-barcode.insert(END, 'Barcode_list.xlsx')
+barcode.insert(END, 'barcodes.csv')
 barcode.grid(row=2, column=1)
 
 def get_barcode_file():
@@ -57,17 +56,10 @@ def get_barcode_file():
 barcode_button = Button(window, text='Select', command=get_barcode_file)
 barcode_button.grid(row=2, column=2)
 
-text = Label(window, text='Sheet name:', background='deepskyblue2')
-text.grid(row=3, column=0, sticky=W)
-sheet = Entry(window, width=30, highlightbackground='deepskyblue2')
-sheet.insert(END, '156 BCs we Ordered')
-sheet.grid(row=3, column=1)
-
 # OUTPUT DIRECTORY NAME
 text = Label(window, text="Output directory (will be created if doesn't exist):", background='deepskyblue2')
 text.grid(row=1, column=0, sticky=W)
 output_ = Entry(window, width=30, highlightbackground='deepskyblue2')
-output_.insert(END, 'bc_count_test')
 output_.grid(row=1, column=1)
 
 def get_output_dir():
@@ -88,7 +80,6 @@ output_text.grid(row=7, column=1, pady=20,)
 
 def check_inputs(fastq,
                  barcode,
-                 sheet,
                  output
                  ):
     # FASTQ CHECKS
@@ -101,8 +92,6 @@ def check_inputs(fastq,
         messagebox.showinfo('Error', 'You must enter a barcode file.')
     elif not os.path.isfile(barcode):
         messagebox.showinfo('Error', 'Barcode file not found.')
-    elif sheet == '':
-        messagebox.showinfo('Error', 'You must enter a sheet name.')
     # OUTPUT DIR CHECKS
     elif output == '':
         messagebox.showinfo('Error', 'You must enter an output directory.')
@@ -114,16 +103,13 @@ def check_inputs(fastq,
 def clicked():
     start = time.time()
     output_text.delete(1.0, 1.0)
-
     fastq_dir = fastq.get()
     barcode_file = barcode.get()
-    sheet_name = sheet.get()
     output_dir = output_.get()
 
     inputs_ok = check_inputs(
                     fastq = fastq_dir,
                     barcode = barcode_file,
-                    sheet = sheet_name,
                     output = output_dir,
     )
 
@@ -132,7 +118,7 @@ def clicked():
         try:
 
             reads = get_read_paths(fastq_dir)
-            barcodes = get_barcodes(barcode_file, sheet_name)
+            barcodes = get_barcodes(barcode_file)
             data = pd.DataFrame(index = barcodes)
             data.index.name = 'barcodes'
             log_data = pd.DataFrame(index = ["Number of instances with 'N' in barcode region",

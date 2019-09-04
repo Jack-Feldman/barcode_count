@@ -17,17 +17,17 @@ import gzip
 bclength = 8
 probe_binding_site = 'CCTGCTAGTCCACGTCCATGTCCACC'
 
-def get_barcodes(barcode_library: str, sheet_name: str ) -> list:
+def get_barcodes(barcode_library: str) -> list:
 	"""
 	Input:
-		File path to excel file with barcodes
+		File path to csv file with barcodes
+		Must be one 8-nt barcode per line
 	Output:
 		List of barcodes
 	"""
-	bc = pd.read_excel(barcode_library, sheet_name=sheet_name)
-	bc.drop(0, inplace=True)
+	bc = pd.read_csv(barcode_library, header=None)
 
-	return [barcode for barcode in bc['8nt Barcode Sequence'] if str(barcode) != 'nan']
+	return [barcode for barcode in list(bc[0]) if str(barcode) != 'nan']
 
 
 def get_read_paths(sample_dir: str) -> list:
@@ -124,7 +124,4 @@ def calc_bc_count(read_path, barcodes, calc_bias=True):
     return barcode_counts, bias_counts, error_log
 
 if __name__ == "__main__":
-    seq = 'TGCTCTCATACGAACTCGTCCCATACCTGCTAGTCCACGTCCATGTCCACCATGATTNGCGTANATGTNGTTAGN'
-    probe_binding_start = seq.find(probe_binding_site)
-    probe_len = len(probe_binding_site)
-    print(get_pcr_regions(seq, probe_binding_start, probe_len))
+	pass
