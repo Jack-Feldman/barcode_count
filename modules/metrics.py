@@ -7,7 +7,7 @@ Functions used in barcode_extract_widget.py script
 import pandas as pd
 import numpy as np
 
-def get_cell_replicates(data):
+def get_cell_replicates(data: DataFrame) -> Dict:
     """
     Returns dictionary
     {cell type : [list of replicate names of that cell type]}
@@ -22,7 +22,7 @@ def get_cell_replicates(data):
 
     return types
 
-def calc_metrics(data):
+def calc_metrics(data: str):
     """
     Input
         File path to normcounts.csv file
@@ -39,7 +39,7 @@ def calc_metrics(data):
 
     return new_data
 
-def return_pcr_bias_df():
+def return_pcr_bias_df() -> DataFrame:
     """
     Returns multi-indexed df for counting pcr bias like below:
 
