@@ -81,7 +81,7 @@ output_text.grid(row=7, column=1, pady=20,)
 def check_inputs(fastq,
                  barcode,
                  output
-                 ) -> Bool:
+                 ) -> bool:
     # FASTQ CHECKS
     if fastq == '':
         messagebox.showinfo('Error', 'You must enter a file path.')
