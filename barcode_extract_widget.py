@@ -23,7 +23,7 @@ from modules.metrics import *
 # -------------------------------------------------------------------
 window = Tk()
 window.title('BARET (BARcode Extraction Tool)')
-window.geometry('800x700')
+window.geometry('800x610')
 window.configure(background='deepskyblue2')
 
 # FASTQ FILE DIRECTORY PATH
