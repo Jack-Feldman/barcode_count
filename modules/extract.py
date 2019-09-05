@@ -42,7 +42,7 @@ def get_read_paths(sample_dir: str) -> list:
 
 		for name in filenames:
 
-			if name == ".DS_Store" or not name.endswith('.gz'):
+			if not name.endswith('fastq.gz'):
 				pass
 			else:
 				read_list.append(f"{dirpath}/{name}")
