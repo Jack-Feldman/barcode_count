@@ -60,7 +60,7 @@ def return_barcode_counter(barcode_list: list) -> OrderedDict:
 
 	return od
 
-def get_pcr_regions(seq, probe_binding_start, probe_len):
+def get_pcr_regions(seq: str, probe_binding_start: int, probe_len: int):
     """
     Returns seq of pcr regions as one string
     """
@@ -71,7 +71,7 @@ def get_pcr_regions(seq, probe_binding_start, probe_len):
 
     return region_1+region_2+region_3
 
-def calc_bc_count(read_path, barcodes, calc_bias=True):
+def calc_bc_count(read_path: str, barcodes: list):
     """
     Input:
     	File path to read
@@ -117,11 +117,7 @@ def calc_bc_count(read_path, barcodes, calc_bias=True):
                             #print(pcr_regions)
                             pass
 
-
                     except KeyError:
                     	error_log['key_errors'] += 1
 
     return barcode_counts, bias_counts, error_log
-
-if __name__ == "__main__":
-	pass

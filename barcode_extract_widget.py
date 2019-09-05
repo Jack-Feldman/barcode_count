@@ -81,7 +81,7 @@ output_text.grid(row=7, column=1, pady=20,)
 def check_inputs(fastq,
                  barcode,
                  output
-                 ):
+                 ) -> Bool:
     # FASTQ CHECKS
     if fastq == '':
         messagebox.showinfo('Error', 'You must enter a file path.')
@@ -116,7 +116,6 @@ def clicked():
     if inputs_ok:
 
         try:
-
             reads = get_read_paths(fastq_dir)
             barcodes = get_barcodes(barcode_file)
             data = pd.DataFrame(index = barcodes)
