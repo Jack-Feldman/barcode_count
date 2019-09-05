@@ -2,11 +2,11 @@
 Pipeline for analyzing results of in-vivo nanoparticle experiments from the Dahlman Lab at Georgia Tech.
 
 ## Input
-> File path to fastq.gz files
+File path to fastq.gz files
 
-> Output directory location
+Output directory location
 
-> Barcode list (csv file, one 8-nt barcode per line)
+Barcode list (csv file, one 8-nt barcode per line)
 
 ## Output 
 
