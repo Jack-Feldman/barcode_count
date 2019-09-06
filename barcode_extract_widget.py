@@ -33,7 +33,7 @@ fastq = Entry(window, width=30, highlightbackground='deepskyblue2')
 fastq.grid(row=0, column=1)
 
 def get_fastq_file():
-    filename = askdirectory(initialdir='/Users/jfeldman/Dropbox (DahlmanLab)/Dahlman Lab/Python/BC_extract')
+    filename = askdirectory()
     fastq.delete(0, END)
     fastq.insert(END, filename)
 
@@ -49,7 +49,7 @@ barcode.insert(END, 'barcodes.csv')
 barcode.grid(row=2, column=1)
 
 def get_barcode_file():
-    filename = askopenfilename(initialdir='/Users/jfeldman/Dropbox (DahlmanLab)/Dahlman Lab/Python/BC_extract')
+    filename = askopenfilename()
     barcode.delete(0, END)
     barcode.insert(END, filename)
 
@@ -63,7 +63,7 @@ output_ = Entry(window, width=30, highlightbackground='deepskyblue2')
 output_.grid(row=1, column=1)
 
 def get_output_dir():
-    filename = askdirectory(initialdir='/Users/jfeldman/Dropbox (DahlmanLab)/Dahlman Lab/Python/BC_extract')
+    filename = askdirectory()
     output_.delete(0, END   )
     output_.insert(END, filename)
 
