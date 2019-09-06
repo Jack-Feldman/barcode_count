@@ -1,6 +1,14 @@
 # barcode_count
 Pipeline for analyzing results of in-vivo nanoparticle experiments from the Dahlman Lab at Georgia Tech.
 
+## How to run
+
+1. Clone this repository into your home directory
+
+2. Open a terminal window
+
+3. Run the following command: `cd barcode_count && python barcode_count_widget.py`
+
 ## Input
 File path to fastq.gz files
 
