@@ -46,6 +46,9 @@ Counts where there was an 'N' in the barcode region and number of instances wher
 
 The following probe binding site was used to find barcodes in each read: 'CCTGCTAGTCCACGTCCATGTCCACC'. In instances where the probe region was not found, the read was skipped. This was likely due to an 'N' being assigned to a position in the probe binding site because a base could not be confidently called. Similarly, if there was an 'N' in the barcode region, this read was skipped as well. 
 
+This pipeline requires Python version 3.7.x. **Important note**: MacOS Mojave version 10.14.6 and python 3.7.3 will cause Tkinter to crash the OS. This is a known Mac bug. If you are using MacOS 10.14.6, downgrade your python version to 3.7.0.
+
+
 
 Author: Jack Feldman
 
