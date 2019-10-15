@@ -30,6 +30,10 @@ Barcode counts normalized to input
 
 Average and standard deviation of normalized barcode counts between replicates of the same cell type
 
+### normalized_compiled.csv
+
+Same as cell_type_variance.csv except replicates are included next to their aggregate metrics
+
 ### pcr_bias.csv
 
 Base percentages for each position in the three randomized pcr regions
