@@ -182,7 +182,7 @@ def clicked():
             output_text.insert(1.0, '\n')
             output_text.update()
 
-            norm_command = ['Rscript', '--vanilla', './modules/normalization.R', raw_counts_path, output_dir]
+            norm_command = ['Rscript', '--vanilla', '~/barcode_count/modules/normalization.R', raw_counts_path, output_dir]
             process = subprocess.Popen(norm_command, stdout=subprocess.PIPE)
             output, error = process.communicate()
 
@@ -198,9 +198,12 @@ def clicked():
                 output_text.update()
 
             # Calculate avg and std of norm counts for all cell types
-            cell_type_variance = calc_metrics(data=norm_counts_path)
+            cell_type_variance, normalized_compiled = calc_metrics(data=norm_counts_path)
             variance_path = os.path.join(output_dir, 'cell_type_variance.csv')
             cell_type_variance.to_csv(variance_path)
+
+            normalized_compiled_path = os.path.join(output_dir, 'normalized_compiled.csv')
+            normalized_compiled.to_csv(normalized_compiled_path)
 
             output_text.insert(1.0, f"Files written to:\n{output_dir}\n")
             end = time.time()
