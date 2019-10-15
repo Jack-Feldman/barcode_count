@@ -31,13 +31,23 @@ def calc_metrics(data: str):
     """
     data = pd.read_csv(data, index_col=[0])
     # Create new df
-    new_data = pd.DataFrame(index = data.index)
+    cell_data = pd.DataFrame(index = data.index)
+    compiled_data = pd.DataFrame(index = data.index)
     cell_types = get_cell_replicates(data)
-    for cell_type in cell_types:
-        new_data[cell_type + '_avg'] = data[cell_types[cell_type]].mean(axis=1)
-        new_data[cell_type + '_std'] = data[cell_types[cell_type]].std(axis=1)
 
-    return new_data
+    for cell_type in cell_types:
+
+        cell_mean = data[cell_types[cell_type]].mean(axis=1)
+        cell_sd = data[cell_types[cell_type]].std(axis=1)
+
+        for output_file in [cell_data, compiled_data]:
+            output_file[cell_type + '_avg'] = cell_mean
+            output_file[cell_type + '_std'] = cell_sd
+
+        #Add norm counts into compiled data file
+        compiled_data[cell_types[cell_type]] = data[cell_types[cell_type]]
+
+    return cell_data, compiled_data
 
 def return_pcr_bias_df() -> pd.DataFrame:
     """
