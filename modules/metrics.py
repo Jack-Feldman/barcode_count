@@ -14,7 +14,7 @@ def get_cell_replicates(data: pd.DataFrame) -> dict:
     """
     types = {}
     for name in data.columns:
-        cell_type = name.split(".")[2]
+        cell_type = name.split(".")[0]
         if cell_type not in types:
             types[cell_type] = [name]
         else:
