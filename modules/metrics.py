@@ -27,7 +27,8 @@ def calc_metrics(data: str):
     Input
         File path to normcounts.csv file
     Output
-        New df with calculated std and average metrics
+        Df with calculated std and average metrics
+        Df with metrics and replicates
     """
     data = pd.read_csv(data, index_col=[0])
     # Create new df

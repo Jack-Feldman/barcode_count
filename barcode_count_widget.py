@@ -182,7 +182,7 @@ def clicked():
             output_text.insert(1.0, '\n')
             output_text.update()
 
-            norm_command = ['Rscript', '--vanilla', '~/barcode_count/modules/normalization.R', raw_counts_path, output_dir]
+            norm_command = ['Rscript', '--vanilla', './modules/normalization.R', raw_counts_path, output_dir]
             process = subprocess.Popen(norm_command, stdout=subprocess.PIPE)
             output, error = process.communicate()
 
