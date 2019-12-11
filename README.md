@@ -7,7 +7,7 @@ Pipeline for analyzing results of in-vivo nanoparticle experiments from the Dahl
 
 2. Open a terminal window
 
-3. Run the following command: `python ~/barcode_count/barcode_count_widget.py`
+3. Run the following command: `cd ~/barcode_count && python barcode_count_widget.py`
 
 ## Input
 File path to fastq.gz files
